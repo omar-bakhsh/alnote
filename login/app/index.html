@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html dir=auto>
+
+<head>
+    <!-- UTF unicode  -->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<!-- Meta Tab logo  -->
+<link rel="icon" href="./assest/WhitLogo.png">
+    <!-- url style color meta  Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#8000804d">
+    <!--  url style color meta  Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#8000804d">
+    <!--url style color meta   iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#8000804d">
+    <!-- Bootstrap style link  -->
+    <link rel="stylesheet" media="all" href="./bootstrap/css/bootstrap.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=Liu+Jian+Mao+Cao&family=Open+Sans:ital,wght@1,700&family=Roboto&family=Roboto+Condensed:ital,wght@1,700&family=Sacramento&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="./Note.css">
+    <title>Alnote</title>
+</head>
+
+<body>
+    <header>
+        <!-- co name  📓🖉  -->
+    <div class="Jwmwl"><img src="./assest/WhitLogo.png" id="headerLogo">Alnote </div class="Jwmwl"> 
+        <!-- Refresh Btn -->
+        <button type="button" class="btn btn-success btn-circle" onclick=" Load_Note();"><span title="Menual Note Load" class="glyphicon">&#x21bb;</span></button>
+        <!-- copy note tool -->
+        <button id="copy_btn" onclick="Copy_Note();"><img class="icon_copy" src="./assest/copy.svg" alt="Copy Text" title="Copy Title & Contant "></button>
+        <!-- add symboles tool -->
+        <div class="dropdown">
+            <img onclick="myFunction()" class="dropbtn" src="./assest/omega.png" title="Add Symbole">
+            <div id="myDropdown" class="dropdown-content">
+                <div>♥</div>
+                <div>☺</div>
+                <div>π</div>
+                <div>•</div>
+                <div>Σ</div>
+                <div>°</div>
+                <div>Ω</div>
+                <div>∞</div>
+                <div>×</div>
+                <div>÷</div>
+                <div>≥</div>
+                <div>≤</div>
+                <div>≠</div>
+                <div>®</div>
+                <div>©</div>
+                <div>¥</div>
+                <div>£</div>
+                <div>€</div>
+            </div>
+        </div>
+        <!-- font size tool -->
+        <div class="dv_font_size_select" title="font size">
+            <select id="font_sizes" onchange="fontSizSelct();">
+                <option value="" selected disabled hidden>18</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <div class="dv_font_family_select" title="Font family">
+            <select style="width: 105px" id="font_familys" onchange="fontFamilySelct();">
+                <option selected style="font-family: arial" value="arial">arial</option>
+                <option style="font-family: Open Sans" value="Open Sans">Open Sans</option>
+                <option style="font-family: Liu Jian Mao Cao" value="Liu Jian Mao Cao">Liu Jian Mao</option>
+                <option style="font-family: Ubuntu" value="Ubuntu">Ubuntu</option>
+                <option style="font-family: Mao" value="Mao">Mao</option>
+                <option style="font-family: Sans" value="Sans">Sans</option>
+                <option style="font-family: Roboto" value="Roboto">Roboto</option>
+                <option style="font-family: Condensed" value="Condensed">Condensed</option>
+            </select>
+        </div>
+        <!-- font left_right_tool -->
+        <div class="dv_left_right_tool">
+            <img id="left-to-right_icon" onclick="fontRightToLeft()" src="./assest/left-to-right.svg" title="Text Diraction">
+        </div>
+        <div class="Drp-sitting-container" onmouseover="DropDownSetting()" onmouseleave="EndDrpDonSetting()" title="Setting">
+            &#9881;
+            <div>  
+               <!-- theme switch -->
+             <label class="theme-switch" for="checkbox" title="Theme Change">
+                    <!-- i tag for lebel width  -->
+                    <i style="color:purple"> Dark Mode!</i>
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label></div>
+                <!-- sin out -->
+                <div id="dv_Log_out" onclick="LogOut()">Log out</div>
+        </div>
+ <div class="AndroidDiv"><img src="./assest/GooglPlay.png" id="AndroidLogo" onclick="window.open('https://play.google.com/store/apps/details?id=com.alconsul.alnote&hl=en', '_blank')" title="Download Android App">
+ </div>
+        <!-- Delet item -->
+        <div class="div_basket">
+            <button id="delet_backet_btn" onclick="del();"><img class="icon_delete" src="./assest/delete-m.png" alt="delete-m" title="click to start Delete Notes "></button>
+        </div>
+    </header>
+    <!-- container -->
+    <div id="container">
+        <!-- online Left Dive  -->
+        <div id="OnlineNotes"  ></div>
+        <!-- btn extand div note -->
+        <button id="btn-position" onclick="makeResizableDiv(event);"><img  id="size_arrow_img"src="./assest/left-arrow.svg"></button>
+
+        <!-- note  Right dive  -->
+        <div id="NoteCloud">
+            <div class="Div_title">
+                <!--   title      -->
+                <input type="text" id="inpt_title" class="copy_erea" placeholder="The title.." maxlength="70" autofocus>
+                <div id="clearForm" onclick="clearFormFun();" title="clearForm" >&#43;</div>
+            </div>
+            <div class="Div_Note_form">
+                <!--   the note        -->
+                <textarea id="Note_form" class="copy_erea" placeholder="The Content.." ></textarea>
+                <button class="add_buttun" onclick="creatNote();" onmouseover="ShowUpdatBtn();"><img class="icon_cloud" src="./assest/upload.svg" title="Creat New"  alt="upload"><img class="icon_stick_add_buttun" src="./assest/update.svg"   alt="update"></button>
+                <!-- Update Btn  -->
+                  <button class="add_buttun" id="update-Btn" onclick="updateNote();" onmouseleave="HideUpdatBtn();"><img class="icon_update" src="./assest/update.svg" title="Update"  alt="update"></button>
+            </div>
+        </div>
+    </div>
+    <div class="statusPopup">Loaded</div>
+    <!-- <footer class="footer">footer</footer> -->
+    <script type="text/javascript" src="./Note.js"></script>
+    <!-- <script src="/bootstrap/jquery/jQuery.js">
+    </script> -->
+    <!-- <script src="./bootstrap/js/bootstrap.js"></script> -->
+</body>
+
+</html>

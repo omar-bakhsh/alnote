@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Unicode Reader -->
+    <meta charset="utf-8">
+    <!-- Bootstrap Lib Offline @ -->
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="./Main.css">
+    <title>&#9729; Sign in page </title>
+</head>
+
+<body>
+    <div class="container register-form" id="Container">
+        <div class="form" id="form">
+            <div class="note">
+                <p>
+                    Creat Account <i class="material-icons md-24"></i>
+                </p>
+            </div>
+            <!-- Form Start  -->
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="👤 Your Name " value="" id="NameSign" />
+                            <!-- This Prograph For Erorr Fills By javaScript -->
+                            <p id="NmError"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="Email" class="form-control" placeholder="📧 Your Email  *" id="EmailSign" />
+                            <!-- This Prograph For Erorr Fills By javaScript -->
+                            <p id="EmlError"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="Password" class="form-control" placeholder="🔑 Your Password  * " value="" id="PassSign" />
+                                <!-- This Prograph For Erorr Fills By javaScript -->
+                                <p id="pssError"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p id="logInLink"><a href="./login/index.html">Or Log in </a></p>
+                <button type="button" class="btnSubmit" onClick="CreatAccountHandler();">Submit</button>
+            </div>
+        </div>
+    </div>
+    <script  src="./Main.js" type="text/javascript"></script>
+</body>
+
+</html>
